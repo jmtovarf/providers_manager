@@ -1,6 +1,9 @@
+import uvicorn
+
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi import FastAPI
+
+from settings import PORT, RELOAD
 
 from api.models import create_db_models
 from api.routes.user import user
@@ -20,3 +23,6 @@ app = FastAPI(
 app.mount("/static", StaticFiles(directory="client/static"), name="static")
 
 app.include_router(user, prefix="/api/v1")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=PORT, reload=RELOAD)
