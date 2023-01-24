@@ -2,9 +2,12 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI
 
+from api.models import create_db_models
 from api.routes.user import user
 
 import docs
+
+create_db_models()
 
 app = FastAPI(
     title=docs.__title__,
@@ -16,4 +19,4 @@ app = FastAPI(
 
 app.mount("/static", StaticFiles(directory="client/static"), name="static")
 
-app.include_router(user)
+app.include_router(user, prefix="/api/v1")
