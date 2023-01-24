@@ -1,4 +1,7 @@
 {
     "webpage_title": "Fast API Providers Managers",
-    "welcome": "Welcome to Providers Manager App"
+    "welcome": "Welcome to Providers Manager App",
+    "login": "Log In",
+    "user_email": "User Email",
+    "user_password": "Password"
 }

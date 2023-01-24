@@ -9,7 +9,7 @@ templates = Jinja2Templates(directory="client/templates")
 
 # i18n config
 _translations = {}
-default_locale = "en"  # We can configure this based on locale headers or user locale
+DEFAULT_LOCALE = "en"  # We can configure this based on locale headers or user locale
 
 language_list = glob.glob("api/languages/*.json")
 for language in language_list:
@@ -19,4 +19,4 @@ for language in language_list:
         _translations[lang_code] = json.load(file)
 
 global _l
-_l = _translations.get(default_locale, {})
+_l = _translations.get(DEFAULT_LOCALE, {})
