@@ -6,6 +6,6 @@ from api import templates, _l
 user = APIRouter()
 
 
-@user.get("/", response_class=HTMLResponse)
+@user.get("/", response_class=HTMLResponse, tags=["users"])
 async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request, **_l})
