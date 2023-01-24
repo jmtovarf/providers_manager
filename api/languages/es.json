@@ -3,5 +3,6 @@
     "welcome": "Bienvenido a la aplicación Providers Manager",
     "login": "Ingresar",
     "user_email": "Correo Electronico",
-    "user_password": "Contraseña"
+    "user_password": "Contraseña",
+    "invalid_nit_format": "Formato Invalido del NIT"
 }

@@ -1,19 +1,19 @@
+from datetime import datetime
+
 from sqlalchemy import Column, Integer, DateTime
 from sqlalchemy.ext.declarative import declared_attr
-
-from api.config.database import Base
 
 
 class MixinModel:
     """Database common model"""
 
     @declared_attr
-    def __tablename__(cls):
-        return cls.__name__.lower()
+    def id(cls):
+        return Column("id", Integer, primary_key=True)
 
-    id = Column(Integer, primary_key=True)
-    created_time = Column(DateTime, nullable=False)
-    modified_time = Column(DateTime, nullable=False)
+    # id = Column(Integer, primary_key=True)
+    created_time = Column(DateTime, nullable=False, default=datetime.utcnow)
+    modified_time = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     @classmethod
     def get_by_id(cls, id: str):
