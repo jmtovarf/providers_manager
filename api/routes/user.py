@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, Depends
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
 
 from api import templates, _l, flash
@@ -77,3 +77,15 @@ async def login(user: UserCreate, request: Request, db: Session = Depends(get_db
         request.session["token"] = token
         response.update(message=_l.get("welcome"))
     return response
+
+
+@user.get(
+    "/logout",
+    response_class=RedirectResponse,
+    tags=["users"],
+    description="Log Out to main view",
+)
+async def logout(request: Request):
+    redirect_url = request.url_for("index")
+    request.session.pop("token", None)
+    return RedirectResponse(redirect_url)
