@@ -5,6 +5,7 @@ __author__ = "Jhon Tovar"
 __author_email__ = "jmtovarf@gmail.com"
 __url__ = "https://github.com/jmtovarf"
 __tags_metadata__ = [{"name": "users", "description": "Users Routes"}]
+__api_version__ = "/api/v1"
 
 # Should be one of:
 # 'Development Status :: 3 - Alpha'

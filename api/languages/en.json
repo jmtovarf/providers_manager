@@ -4,5 +4,7 @@
     "login": "Log In",
     "user_email": "User Email",
     "user_password": "Password",
-    "invalid_nit_format": "Invalid NIT format"
+    "invalid_nit_format": "Invalid NIT format",
+    "signin": "Sign In",
+    "register": "Register"
 }
