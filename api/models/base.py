@@ -16,5 +16,5 @@ class MixinModel:
     modified_time = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     @classmethod
-    def get_by_id(cls, id: str):
-        return cls.query.filter_by(id=id).one_or_none()
+    def get_by_id(cls, db, id):
+        return db.query(cls).filter_by(id=id).one_or_none()

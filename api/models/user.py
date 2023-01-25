@@ -1,5 +1,4 @@
 from sqlalchemy import Column, String
-from sqlalchemy.orm import Session
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from api.config.database import Base
@@ -19,14 +18,17 @@ class User(MixinModel, Base):
         return check_password_hash(self.hashed_password, password)
 
     @classmethod
-    def find_by_email(cls, db: Session, email: str):
+    def get_by_email(cls, db, email: str):
         return db.query(cls).filter(cls.email == email).one_or_none()
 
     @classmethod
-    def create_user(cls, db: Session, user):
+    def create_user(cls, db, user):
         db_user = cls(email=user.email)
         db_user.set_password(user.password)
         db.add(db_user)
         db.commit()
         db.refresh(db_user)
         return db_user
+
+    def __str__(self):
+        return f"({self.id}) {self.email}"

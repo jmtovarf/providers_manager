@@ -8,5 +8,7 @@
     "signin": "Sign In",
     "register": "Register",
     "user_registered": "User already registered",
-    "registration_success": "User registered successfully"
+    "registration_success": "User registered successfully",
+    "user_not_registered": "User is not registered",
+    "invalid_password": "Invalid password"
 }

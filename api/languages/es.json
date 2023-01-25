@@ -8,5 +8,7 @@
     "signin": "Acceder",
     "register": "Registrarse",
     "user_registered": "El usuario ya se encuentra registrado",
-    "registration_success": "Usuario registrado satisfactoriamente"
+    "registration_success": "Usuario registrado satisfactoriamente",
+    "user_not_registered": "El usuario no se encuentra registrado",
+    "invalid_password": "Contraseña Invalida"
 }
