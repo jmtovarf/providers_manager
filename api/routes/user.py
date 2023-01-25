@@ -6,6 +6,9 @@ from api import templates, _l, flash
 from api.config.database import get_db
 
 from api.models.user import User
+from api.models.account import Bank
+from api.models.provider import Provider
+
 from api.schemas.base import MessageResponse
 from api.schemas.user import UserCreate
 
@@ -19,9 +22,20 @@ async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, **_l})
 
 
-@user.get("/dashboard", response_class=HTMLResponse, tags=["dashboard"])
-async def dashboard(request: Request):
-    return templates.TemplateResponse("dashboard.html", {"request": request, **_l})
+@user.get(
+    "/dashboard",
+    response_class=HTMLResponse,
+    tags=["dashboard"],
+    description="Retrieve all information needed for a dashboard information",
+)
+@auth.check_jwt_auth
+async def dashboard(request: Request, db: Session = Depends(get_db)):
+    # Get information for dashboard main view
+    banks = db.query(Bank).count()
+    providers = db.query(Provider).count()
+    return templates.TemplateResponse(
+        "main.html", {"request": request, "banks": banks, "providers": providers, **_l}
+    )
 
 
 @user.post(
@@ -55,7 +69,11 @@ async def register(user: UserCreate, request: Request, db: Session = Depends(get
     tags=["users"],
     description="Log In an user in the system",
 )
-async def login(user: UserCreate, request: Request, db: Session = Depends(get_db)):
+async def login(
+    user: UserCreate,
+    request: Request,
+    db: Session = Depends(get_db),
+):
     redirect_url = request.url_for("index")
     response = dict(redirect_to=redirect_url)
 
@@ -75,6 +93,7 @@ async def login(user: UserCreate, request: Request, db: Session = Depends(get_db
         )
         # Store the JWT token in the session
         request.session["token"] = token
+        request.session["username"] = user.email
         response.update(message=_l.get("welcome"))
     return response
 
@@ -83,7 +102,7 @@ async def login(user: UserCreate, request: Request, db: Session = Depends(get_db
     "/logout",
     response_class=RedirectResponse,
     tags=["users"],
-    description="Log Out to main view",
+    description="Logout from system access",
 )
 async def logout(request: Request):
     redirect_url = request.url_for("index")

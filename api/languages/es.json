@@ -1,6 +1,6 @@
 {
     "webpage_title": "Fast API Manejo de Proveedores",
-    "welcome": "Bienvenido a la aplicación Providers Manager",
+    "welcome": "Bienvenido a Providers Manager",
     "login": "Ingresar",
     "user_email": "Correo Electronico",
     "user_password": "Contraseña",
@@ -10,5 +10,11 @@
     "user_registered": "El usuario ya se encuentra registrado",
     "registration_success": "Usuario registrado satisfactoriamente",
     "user_not_registered": "El usuario no se encuentra registrado",
-    "invalid_password": "Contraseña Invalida"
+    "invalid_password": "Contraseña Invalida",
+    "logout": "Cerrar Sesión",
+    "l_providers": "Proveedores",
+    "l_banks": "Bancos",
+    "home": "Principal",
+    "home_description": "Esta es la página de inicio de una sencilla interfaz de administración que forma parte de un tutorial escrito en Themesberg",
+    "overview": "Resumen"
 }

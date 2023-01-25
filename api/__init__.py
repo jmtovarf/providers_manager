@@ -5,6 +5,10 @@ import typing
 from fastapi import Request
 from fastapi.templating import Jinja2Templates
 
+from settings import (
+    LANGUAGE,
+)  # We can configure this based on locale headers or user locale
+
 
 # Templates config
 def flash(request: Request, message: typing.Any, category: str = "primary") -> None:
@@ -22,7 +26,6 @@ templates.env.globals["get_flashed_messages"] = get_flashed_messages
 
 # i18n config
 _translations = {}
-DEFAULT_LOCALE = "en"  # We can configure this based on locale headers or user locale
 
 language_list = glob.glob("api/languages/*.json")
 for language in language_list:
@@ -32,4 +35,4 @@ for language in language_list:
         _translations[lang_code] = json.load(file)
 
 global _l
-_l = _translations.get(DEFAULT_LOCALE, {})
+_l = _translations.get(LANGUAGE, {})

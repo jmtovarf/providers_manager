@@ -4,7 +4,10 @@ __description__ = "API Service in charge of handling providers and bank accounts
 __author__ = "Jhon Tovar"
 __author_email__ = "jmtovarf@gmail.com"
 __url__ = "https://github.com/jmtovarf"
-__tags_metadata__ = [{"name": "users", "description": "Users Routes"}]
+__tags_metadata__ = [
+    {"name": "users", "description": "Users Routes"},
+    {"name": "dashboard", "description": "Dashboard Routes"},
+]
 __api_version__ = "/api/v1"
 
 # Should be one of:

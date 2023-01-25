@@ -9,6 +9,8 @@ PORT = int(os.getenv("PORT", 3000))
 RELOAD = bool(strtobool(os.getenv("RELOAD", "True")))
 SECRET_KEY = os.getenv("SECRET_KEY", "supersecretkey")
 
+LANGUAGE = os.getenv("LANGUAGE", "en")
+
 # Database
 DB_HOST = os.getenv("DB_HOST", "127.0.0.1")
 DB_PORT = int(os.getenv("DB_PORT", 3306))
