@@ -10,7 +10,6 @@ jQuery(document).ready(function ($) {
       dataType: "json",
       data: JSON.stringify($(this).serializeJSON()),
       success: function (data) {
-        console.log(data);
         if (data.redirect_to) window.location.replace(data.redirect_to);
       },
       contentType: "application/json",

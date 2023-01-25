@@ -32,6 +32,7 @@ class Provider(ProviderCreate):
     modified_time: datetime = Field(..., description="Time of provider update")
 
     class Config:
+        orm_mode = True
         schema_extra = {
             "example": {
                 "name": "Acme Inc",

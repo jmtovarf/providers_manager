@@ -1,5 +1,4 @@
-from datetime import datetime
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, String
 
 from api.config.database import Base
 from api.models.base import MixinModel

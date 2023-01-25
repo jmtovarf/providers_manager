@@ -18,8 +18,8 @@ class Account(MixinModel, Base):
 
     # Bank Information
     bank_id = Column(Integer, ForeignKey("bank.id"))
-    bank = relationship("Bank", back_populates="account")
+    bank = relationship("Bank")
 
     # Provider Information
     provider_id = Column(String(11), ForeignKey("provider.nit"))
-    provider = relationship("Provider", back_populates="account")
+    provider = relationship("Provider")

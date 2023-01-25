@@ -6,5 +6,7 @@
     "user_password": "Password",
     "invalid_nit_format": "Invalid NIT format",
     "signin": "Sign In",
-    "register": "Register"
+    "register": "Register",
+    "user_registered": "User already registered",
+    "registration_success": "User registered successfully"
 }

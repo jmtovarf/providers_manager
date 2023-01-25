@@ -8,7 +8,7 @@ class MixinModel:
     """Database common model"""
 
     @declared_attr
-    def id(cls):
+    def id(self):
         return Column("id", Integer, primary_key=True)
 
     # id = Column(Integer, primary_key=True)

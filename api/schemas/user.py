@@ -15,3 +15,6 @@ class User(UserBase):
     id: int = Field(..., description="User Id")
     created_time: datetime = Field(..., description="Time of user creation")
     modified_time: datetime = Field(..., description="Time of user update")
+
+    class Config:
+        orm_mode = True
