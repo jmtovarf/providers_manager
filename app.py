@@ -8,6 +8,7 @@ from settings import PORT, RELOAD, SECRET_KEY
 
 from api.models import create_db_models
 from api.routes.user import user
+from api.routes.bank import bank
 
 import docs
 
@@ -33,6 +34,7 @@ async def add_api_version(request: Request, call_next):
 
 
 app.include_router(user, prefix=docs.__api_version__)
+app.include_router(bank, prefix=docs.__api_version__)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=PORT, reload=RELOAD)

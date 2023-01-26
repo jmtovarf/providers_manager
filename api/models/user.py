@@ -22,7 +22,7 @@ class User(MixinModel, Base):
         return db.query(cls).filter(cls.email == email).one_or_none()
 
     @classmethod
-    def create_user(cls, db, user):
+    def create(cls, db, user):
         db_user = cls(email=user.email)
         db_user.set_password(user.password)
         db.add(db_user)

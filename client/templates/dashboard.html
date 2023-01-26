@@ -15,7 +15,7 @@
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-expanded="false">
-                Welcome, {{ request.session.username }}
+                {{ only_welcome }}, {{ request.session.username }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" href="{{ request.state.api_version }}/logout">{{ logout }}</a></li>

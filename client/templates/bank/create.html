@@ -1,0 +1,21 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+<div class="row justify-content-md-center">
+    <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+        <div class="card">
+            <h5 class="card-header">{{ create_bank }}</h5>
+            <div class="card-body">
+                <form action="{{ request.state.api_version }}/bank" method="post" id="register-form">
+                    <div class="form-outline mb-4">
+                        <input type="text" name="name" id="name" class="form-control">
+                        <label class="form-label" for="name">{{ bank_name }}</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">{{ create }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

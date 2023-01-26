@@ -1,6 +1,7 @@
 {
     "webpage_title": "Fast API Providers Managers",
     "welcome": "Welcome to Providers Manager App",
+    "only_welcome": "Welcome",
     "login": "Log In",
     "user_email": "User Email",
     "user_password": "Password",
@@ -16,5 +17,13 @@
     "l_banks": "Banks",
     "home": "Home",
     "home_description": "This is the homepage of a simple admin interface which is part of a tutorial written on Themesberg",
-    "overview": "Overview"
+    "overview": "Overview",
+    "create_bank": "Create New Bank",
+    "bank_name": "Bank Name",
+    "create": "Create",
+    "creation_success": "Created successfully",
+    "not_found": "Id not found",
+    "update_bank": "Update Bank",
+    "update": "Update",
+    "update_success": "Updated successfully"
 }

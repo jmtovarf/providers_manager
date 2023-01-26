@@ -1,6 +1,7 @@
 {
     "webpage_title": "Fast API Manejo de Proveedores",
     "welcome": "Bienvenido a Providers Manager",
+    "only_welcome": "Bienvenido",
     "login": "Ingresar",
     "user_email": "Correo Electronico",
     "user_password": "Contraseña",
@@ -16,5 +17,13 @@
     "l_banks": "Bancos",
     "home": "Principal",
     "home_description": "Esta es la página de inicio de una sencilla interfaz de administración que forma parte de un tutorial escrito en Themesberg",
-    "overview": "Resumen"
+    "overview": "Resumen",
+    "create_bank": "Crear Nuevo Banco",
+    "bank_name": "Nombre del Banco",
+    "create": "Crear",
+    "creation_success": "Creado satisfactoriamente",
+    "not_found": "Id no encontrado",
+    "update_bank": "Actualizar Banco",
+    "update": "Actualizar",
+    "update_success": "Actualizado satisfactoriamente"
 }

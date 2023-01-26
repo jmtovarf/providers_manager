@@ -1,0 +1,55 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+        {% with messages = get_flashed_messages(request) %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.category }} alert-dismissible fade show" role="alert">
+            {{ message.message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="card">
+            <h5 class="card-header">Banks List</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Modified At</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if banks %}
+                            {% for bank in banks %}
+                            <tr>
+                                <td>{{ bank.id }}</td>
+                                <td>{{ bank.name }}</td>
+                                <td>{{ bank.created_time }}</td>
+                                <td>{{ bank.modified_time }}</td>
+                                <td>
+                                    <a href="{{ request.state.api_version }}/bank/update/{{ bank.id }}"
+                                        class="btn btn-secondary">Edit</a>
+                                    <a href="/delete/{{ bank.id }}" class="btn btn-danger btn-delete">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <a href="{{ request.state.api_version }}/bank/create" class="btn btn-block btn-primary">Create New</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

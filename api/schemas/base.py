@@ -3,8 +3,8 @@ from typing import Optional
 
 
 class Pagination(BaseModel):
-    page: int = 1
-    limit: int = 10
+    skip: Optional[int] = 0
+    limit: Optional[int] = 10
 
 
 class MessageResponse(BaseModel):

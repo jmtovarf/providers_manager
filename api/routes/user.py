@@ -31,8 +31,8 @@ async def index(request: Request):
 @auth.check_jwt_auth
 async def dashboard(request: Request, db: Session = Depends(get_db)):
     # Get information for dashboard main view
-    banks = db.query(Bank).count()
-    providers = db.query(Provider).count()
+    banks = Bank.get_total(db)
+    providers = Provider.get_total(db)
     return templates.TemplateResponse(
         "main.html", {"request": request, "banks": banks, "providers": providers, **_l}
     )
@@ -57,7 +57,7 @@ async def register(user: UserCreate, request: Request, db: Session = Depends(get
         return response
 
     # Register user
-    User.create_user(db=db, user=user)
+    User.create(db=db, user=user)
     flash(request, response["message"], "success")
     return response
 

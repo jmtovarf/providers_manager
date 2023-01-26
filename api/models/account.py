@@ -10,6 +10,14 @@ class Bank(MixinModel, Base):
 
     name = Column(String(50), unique=True, index=True)
 
+    @classmethod
+    def create(cls, db, bank):
+        bank = cls(**bank.dict())
+        db.add(bank)
+        db.commit()
+        db.refresh(bank)
+        return bank
+
 
 class Account(MixinModel, Base):
     __tablename__ = "account"

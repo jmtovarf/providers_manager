@@ -18,3 +18,20 @@ class MixinModel:
     @classmethod
     def get_by_id(cls, db, id):
         return db.query(cls).filter_by(id=id).one_or_none()
+
+    @classmethod
+    def get_total(cls, db):
+        return db.query(cls).count()
+
+    @classmethod
+    def get_all(cls, db, skip=0, limit=10):
+        return db.query(cls).offset(skip).limit(limit).all()
+
+    def update(self, db, data: dict):
+        for key, value in data.items():
+            setattr(self, key, value)
+
+        db.add(self)
+        db.commit()
+        db.refresh(self)
+        return self
