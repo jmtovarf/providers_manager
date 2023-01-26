@@ -128,8 +128,8 @@ If you find a bug please report it via GitHub and assign it to one of the
 project owners below. If you can, please write a unittest that validates the bug and
 do a PR, this make things faster :-)
 
-# Who currently supports this project ?
-=======================================
+Who currently supports this project ?
+=====================================
 
 * Jhon Tovar <jmtovarf@gmail.com>
 
