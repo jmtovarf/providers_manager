@@ -1,0 +1,44 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+        <div class="card">
+            <h5 class="card-header">{{ provider_details }}</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ l_name }}</th>
+                                <th scope="col">{{ provider_nit }}</th>
+                                <th scope="col">{{ provider_contact_name }}</th>
+                                <th scope="col">{{ provider_contact_number }}</th>
+                                <th scope="col">{{ bank_name }}</th>
+                                <th scope="col">{{ provider_account_number }}</th>
+                                <th scope="col">{{ l_created_at }}</th>
+                                <th scope="col">{{ l_modified_at }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ provider.name }}</td>
+                                <td>{{ provider.nit }}</td>
+                                <td>{{ provider.contact_name }}</td>
+                                <td>{{ provider.contact_number }}</td>
+                                <td>{{ provider.account.bank.name }}</td>
+                                <td>{{ provider.account.account_number }}</td>
+                                <td>{{ provider.created_time }}</td>
+                                <td>{{ provider.modified_time }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

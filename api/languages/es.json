@@ -45,5 +45,6 @@
     "provider_account_number": "Número de Cuenta",
     "l_no_data": "Sin información en la tabla",
     "update_provider": "Actualizar Proveedor",
-    "account_information": "Información de la Cuenta"
+    "account_information": "Información de la Cuenta",
+    "provider_details": "Detalles del Proveedor"
 }

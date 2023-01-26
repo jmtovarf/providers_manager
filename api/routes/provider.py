@@ -105,3 +105,41 @@ async def update_provider(
     flash(request, response["message"], "success")
 
     return response
+
+
+@provider.get("/provider/details/{provider_id}")
+@auth.check_jwt_auth
+async def details_view(
+    request: Request, provider_id: str, db: Session = Depends(get_db)
+):
+    provider = Provider.get_by_id(db, id=provider_id)
+    if not provider:
+        flash(request, _l.get("not_found"), "success")
+        redirect_url = request.url_for("list_providers")
+        return RedirectResponse(redirect_url)
+
+    provider_entity = ProviderSchema.from_orm(provider)
+    return templates.TemplateResponse(
+        "provider/details.html",
+        {"request": request, "provider": provider_entity, **_l},
+    )
+
+
+@provider.get(
+    "/provider/delete/{provider_id}",
+    tags=["provider"],
+    description="Deletes a provider",
+)
+@auth.check_jwt_auth
+async def delete_bank(
+    request: Request, provider_id: str, db: Session = Depends(get_db)
+):
+    redirect_url = request.url_for("list_providers")
+    response = dict(redirect_to=redirect_url, message=_l.get("delete_success"))
+
+    provider = Provider.get_by_id(db, provider_id)
+    provider.account.delete(db)
+    provider.delete(db)
+
+    flash(request, response["message"], "success")
+    return RedirectResponse(redirect_url)

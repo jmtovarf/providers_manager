@@ -41,9 +41,10 @@
     "create_provider": "Create New Provider",
     "provider_contact_name": "Contact Name",
     "provider_nit": "Nit",
-    "provider_contact_number": "Contact Phone Number",
+    "provider_contact_number": "Contact Phone",
     "provider_account_number": "Account Number",
     "l_no_data": "No data found in table",
     "update_provider": "Update Provider",
-    "account_information": "Account Information"
+    "account_information": "Account Information",
+    "provider_details": "Provider Details"
 }
