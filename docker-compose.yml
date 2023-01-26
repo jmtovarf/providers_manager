@@ -1,0 +1,26 @@
+version: "3.8"
+volumes:
+  database_data:
+    driver: local
+
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=storedb
+      - MYSQL_ROOT_PASSWORD=adminpass
+    ports:
+      - 3306:3306
+
+  provider_manager:
+    image: provider_manager:local
+    build: 
+      context: .
+    env_file: .env
+    volumes:
+      - .:/src/build
+    ports:
+      - 80:8000
+    depends_on:
+      - db
