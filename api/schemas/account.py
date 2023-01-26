@@ -5,7 +5,7 @@ from typing import Optional
 
 # Bank Serializers
 class BankBase(BaseModel):
-    name: str = Field(max_length=50, description="Name of the bank")
+    name: str = Field(min_length=1, max_length=50, description="Name of the bank")
 
 
 class BankCreate(BankBase):
@@ -31,7 +31,9 @@ class Bank(BankBase):
 
 # Providers Accounts
 class AccountBase(BaseModel):
-    account_number: str = Field(max_length=15, description="Number of bank account")
+    account_number: Optional[str] = Field(
+        default=None, min_length=1, max_length=15, description="Number of bank account"
+    )
 
 
 class AccountCreate(AccountBase):

@@ -9,11 +9,11 @@ from api.schemas.account import AccountCreate, Account
 
 
 class ProviderBase(BaseModel):
-    name: str = Field(..., description="Provider Name")
-    nit: str = Field(max_length=11, description="Provider NIT")
-    contact_name: str = Field(..., description="Provider Contact Name")
+    name: str = Field(min_length=1, description="Provider Name")
+    nit: str = Field(min_length=1, max_length=11, description="Provider NIT")
+    contact_name: str = Field(min_length=1, description="Provider Contact Name")
     contact_number: Optional[str] = Field(
-        ..., description="Provider Contact Number (Optional)"
+        max_length=10, description="Provider Contact Number (Optional)"
     )
 
 

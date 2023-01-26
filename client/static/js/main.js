@@ -20,10 +20,12 @@ jQuery(document).ready(function ($) {
       error: function (error) {
         let error_mapped = JSON.parse(error.responseText);
         let error_message = "";
-        if (Array.isArray(error_mapped.detail))
+        let location = "";
+        if (Array.isArray(error_mapped.detail)) {
           error_message = error_mapped.detail[0].msg;
-        else error_message = error_mapped.detail;
-        alert(error_message);
+          location = error_mapped.detail[0].loc[1] + ": ";
+        } else error_message = error_mapped.detail;
+        alert(location + error_message);
       },
     });
 
