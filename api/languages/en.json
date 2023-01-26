@@ -36,5 +36,12 @@
     "actions": "Actions",
     "edit": "Edit",
     "delete": "Delete",
-    "create_new": "Create New"
+    "create_new": "Create New",
+    "provider_list": "Providers List",
+    "create_provider": "Create New Provider",
+    "provider_contact_name": "Contact Name",
+    "provider_nit": "Nit",
+    "provider_contact_number": "Contact Phone Number",
+    "provider_account_number": "Account Number",
+    "l_no_data": "No data found in table"
 }

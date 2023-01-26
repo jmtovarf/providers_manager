@@ -36,10 +36,10 @@ class AccountBase(BaseModel):
 
 class AccountCreate(AccountBase):
     bank_id: Optional[int] = Field(
-        ..., description="Id of the bank related to the provider account"
+        default=None, description="Id of the bank related to the provider account"
     )
 
-    bank_name: int = Field(
+    bank_name: str = Field(
         ..., description="Name of the bank related to the provider account"
     )
 

@@ -36,5 +36,12 @@
     "actions": "Acciones",
     "edit": "Editar",
     "delete": "Borrar",
-    "create_new": "Crear Nuevo"
+    "create_new": "Crear Nuevo",
+    "provider_list": "Lista de Proveedores",
+    "create_provider": "Crear nuevo Proveedor",
+    "provider_contact_name": "Nombre Contacto",
+    "provider_nit": "Nit",
+    "provider_contact_number": "Número de Contacto",
+    "provider_account_number": "Número de Cuenta",
+    "l_no_data": "Sin información en la tabla"
 }

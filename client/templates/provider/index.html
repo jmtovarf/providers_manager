@@ -1,0 +1,63 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+        {% with messages = get_flashed_messages(request) %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.category }} alert-dismissible fade show" role="alert">
+            {{ message.message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="card">
+            <h5 class="card-header">{{ provider_list }}</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ l_name }}</th>
+                                <th scope="col">{{ provider_contact_name }}</th>
+                                <th scope="col">{{ provider_contact_number }}</th>
+                                <th scope="col">{{ bank_name }}</th>
+                                <th scope="col">{{ provider_account_number }}</th>
+                                <th scope="col">{{ actions }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if providers %}
+                            {% for provider in providers %}
+                            <tr>
+                                <td>
+                                    <a href="{{ request.state.api_version }}/provider/details/{{ provider.nit }}">{{
+                                        provider.name}}</a>
+                                </td>
+                                <td>{{ provider.contact_name }}</td>
+                                <td>{{ provider.contact_number or l_no_data }}</td>
+                                <td>{{ provider.account.bank.name }}</td>
+                                <td>{{ provider.account.account_number }}</td>
+                                <td>
+                                    <a href="{{ request.state.api_version }}/provider/update/{{ provider.nit }}"
+                                        class="btn btn-secondary">{{ edit }}</a>
+                                    <a href="{{ request.state.api_version }}/provider/delete/{{ provider.nit }}"
+                                        class="btn btn-danger btn-delete">{{ delete }}</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                <a href="{{ request.state.api_version }}/provider/create" class="btn btn-block btn-primary">{{
+                    create_new
+                    }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

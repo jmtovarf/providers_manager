@@ -5,7 +5,7 @@ from pydantic import BaseModel, validator, Field
 from typing import Optional
 
 from api import _l
-from api.schemas.account import AccountCreate
+from api.schemas.account import AccountCreate, Account
 
 
 class ProviderBase(BaseModel):
@@ -17,17 +17,19 @@ class ProviderBase(BaseModel):
     )
 
 
-class ProviderCreate(ProviderBase):
-    account: AccountCreate = Field(..., description="Provider Account information")
-
+class ProviderCreate(ProviderBase, AccountCreate):
     @validator("nit", pre=True)
     def nit_validation(cls, value):
-        if not re.match(r"^\d{9}-?\d{0,1}$", value):
+        if not re.match(r"^\d{9}-?\d?$", value):
             raise ValueError(_l.get("invalid_nit_format"))
         return value
 
 
-class Provider(ProviderCreate):
+class Provider(ProviderBase):
+    account: Optional[Account] = Field(
+        default=None, description="Provider Account information"
+    )
+
     created_time: datetime = Field(..., description="Time of provider creation")
     modified_time: datetime = Field(..., description="Time of provider update")
 
