@@ -29,7 +29,7 @@ class Bank(MixinModel, Base):
 class Account(MixinModel, Base):
     __tablename__ = "account"
 
-    account_number = Column(String(15), unique=True, index=True)
+    account_number = Column(String(15), index=True)
 
     # Bank Information
     bank_id = Column(Integer, ForeignKey("bank.id"))

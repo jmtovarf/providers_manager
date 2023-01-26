@@ -3,43 +3,52 @@
 <div class="row justify-content-md-center">
     <div class="col-12 col-xl-8 mb-4 mb-lg-0">
         <div class="card">
-            <h5 class="card-header">{{ create_provider }}</h5>
+            <h5 class="card-header">{{ update_provider }}</h5>
             <div class="card-body">
-                <form action="{{ request.state.api_version }}/provider" method="post" id="register-form">
+                <form action="{{ request.state.api_version }}/provider/{{ provider.nit }}" method="put"
+                    id="register-form">
                     <div class="form-outline mb-4">
-                        <input type="text" name="name" id="name" class="form-control">
+                        <input type="text" name="name" id="name" class="form-control" value="{{ provider.name }}">
                         <label class="form-label" for="name">{{ l_name }}</label>
                     </div>
                     <div class="form-outline mb-4">
-                        <input type="text" name="nit" id="nit" class="form-control">
+                        <input type="text" name="nit" id="nit" class="form-control" value="{{ provider.nit }}">
                         <label class="form-label" for="nit">{{ provider_nit }}</label>
                     </div>
                     <div class="form-outline mb-4">
-                        <input type="text" name="contact_name" id="contact_name" class="form-control">
+                        <input type="text" name="contact_name" id="contact_name" class="form-control"
+                            value="{{ provider.contact_name }}">
                         <label class="form-label" for="contact_name">{{ provider_contact_name }}</label>
                     </div>
                     <div class="form-outline mb-4">
-                        <input type="text" name="contact_number" id="contact_number" class="form-control">
+                        <input type="text" name="contact_number" id="contact_number" class="form-control"
+                            value="{{ provider.contact_number }}">
                         <label class="form-label" for="contact_number">{{ provider_contact_number }}</label>
                     </div>
                     <hr />
                     <h5>{{ account_information }}</h5>
                     <div class="form-outline mb-4">
-                        <input type="text" name="account_number" id="account_number" class="form-control">
+                        <input type="text" name="account_number" id="account_number" class="form-control"
+                            value="{{ provider.account.account_number }}">
                         <label class="form-label" for="account_number">{{ provider_account_number }}</label>
                     </div>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="bank_name">{{ bank_name }}</label>
-                        <select name="bank_name" id="bank_name" class="form-select">
+                        <select name="bank_name" id="bank_name" class="form-select"
+                            value="{{ provider.account.bank.name }}">
+                            <option value="{{ provider.account.bank.name }}">{{ provider.account.bank.name }}</option>
                             {% if banks %}
                             {% for bank in banks %}
+                            {% if provider.account.bank.name != bank.name %}
                             <option value="{{ bank.name }}">{{ bank.name }}</option>
+                            {% endif %}
                             {% endfor %}
                             {% endif %}
                         </select>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">{{ create }}</button>
+                        <input type="hidden" name="method" value="patch">
+                        <button type="submit" class="btn btn-primary btn-block">{{ update }}</button>
                     </div>
                 </form>
             </div>

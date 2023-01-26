@@ -18,6 +18,28 @@ class Provider(MixinModel, Base):
     def nit(self):
         return self.id
 
+    def update(self, db, data):
+        provider_data = dict(
+            id=data["nit"],
+            name=data["name"],
+            contact_name=data["contact_name"],
+            contact_number=data["contact_number"],
+        )
+        super().update(db, data=provider_data)
+
+        bank = self.account.bank
+        if self.account.bank.name != data["bank_name"]:
+            bank = Bank.get_by_name(db, name=data["bank_name"])
+
+        account_data = dict(
+            bank=bank,
+            account_number=data["account_number"],
+        )
+
+        self.account.update(db, data=account_data)
+
+        return self
+
     @classmethod
     def create(cls, db, data):
         # Create provider model

@@ -7,6 +7,8 @@ __url__ = "https://github.com/jmtovarf"
 __tags_metadata__ = [
     {"name": "users", "description": "Users Routes"},
     {"name": "dashboard", "description": "Dashboard Routes"},
+    {"name": "bank", "description": "Banks Routes"},
+    {"name": "provider", "description": "Providers Routes"},
 ]
 __api_version__ = "/api/v1"
 

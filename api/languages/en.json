@@ -43,5 +43,7 @@
     "provider_nit": "Nit",
     "provider_contact_number": "Contact Phone Number",
     "provider_account_number": "Account Number",
-    "l_no_data": "No data found in table"
+    "l_no_data": "No data found in table",
+    "update_provider": "Update Provider",
+    "account_information": "Account Information"
 }
