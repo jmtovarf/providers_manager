@@ -13,7 +13,7 @@ from api.utils import auth
 bank = APIRouter()
 
 
-@bank.get("/bank")
+@bank.get("/bank", tags=["bank"], description="Get the list of banks created")
 @auth.check_jwt_auth
 async def list_banks(
     request: Request, skip: int = 0, limit: int = 10, db: Session = Depends(get_db)
@@ -28,10 +28,17 @@ async def list_banks(
 
 @bank.get("/bank/details/{bank_id}")
 @auth.check_jwt_auth
-async def get_bank(request: Request, bank_id: int):
+async def details_view(request: Request, bank_id: int, db: Session = Depends(get_db)):
+    bank = Bank.get_by_id(db, id=bank_id)
+    if not bank:
+        flash(request, _l.get("not_found"), "success")
+        redirect_url = request.url_for("list_banks")
+        return RedirectResponse(redirect_url)
+
+    bank_entity = BankSchema.from_orm(bank)
     return templates.TemplateResponse(
         "bank/details.html",
-        {"request": request, **_l},
+        {"request": request, "bank": bank_entity, **_l},
     )
 
 
@@ -58,6 +65,18 @@ async def update_view(request: Request, bank_id: int, db: Session = Depends(get_
         "bank/update.html",
         {"request": request, "bank": bank_entity, **_l},
     )
+
+
+@bank.get("/bank/delete/{bank_id}", tags=["bank"], description="Deletes a bank")
+@auth.check_jwt_auth
+async def delete_bank(request: Request, bank_id: int, db: Session = Depends(get_db)):
+    redirect_url = request.url_for("list_banks")
+    response = dict(redirect_to=redirect_url, message=_l.get("delete_success"))
+
+    bank_model = Bank.get_by_id(db, bank_id)
+    bank_model.delete(db)
+    flash(request, response["message"], "success")
+    return RedirectResponse(redirect_url)
 
 
 @bank.post(

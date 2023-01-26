@@ -30,8 +30,8 @@ def check_jwt_auth(func):
             if not stored_token:
                 return RedirectResponse(url=request.url_for("index"))
             jwt.decode(stored_token, SECRET_KEY)
-        except JWTError:
-            raise HTTPException(status_code=400, detail="Invalid token")
+        except JWTError as e:
+            raise HTTPException(status_code=400, detail=f"Invalid token: {e}")
         except KeyError:
             raise HTTPException(status_code=401, detail="Authorization Required")
         except Exception as e:

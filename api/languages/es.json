@@ -25,5 +25,16 @@
     "not_found": "Id no encontrado",
     "update_bank": "Actualizar Banco",
     "update": "Actualizar",
-    "update_success": "Actualizado satisfactoriamente"
+    "update_success": "Actualizado satisfactoriamente",
+    "l_id": "Id",
+    "l_name": "Nombre",
+    "l_created_at": "Fecha de creación",
+    "l_modified_at": "Fecha de Actualización",
+    "bank_details": "Detalles del Banco",
+    "delete_success": "Eliminado satisfactoriamente",
+    "bank_list": "Lista de Bancos",
+    "actions": "Acciones",
+    "edit": "Editar",
+    "delete": "Borrar",
+    "create_new": "Crear Nuevo"
 }

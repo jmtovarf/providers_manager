@@ -25,5 +25,16 @@
     "not_found": "Id not found",
     "update_bank": "Update Bank",
     "update": "Update",
-    "update_success": "Updated successfully"
+    "update_success": "Updated successfully",
+    "l_id": "Id",
+    "l_name": "Name",
+    "l_created_at": "Created At",
+    "l_modified_at": "Modified At",
+    "bank_details": "Banks Details",
+    "delete_success": "Deleted successfully",
+    "bank_list": "Banks List",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "create_new": "Create New"
 }

@@ -6,7 +6,6 @@ load_dotenv()  # take environment variables from .env
 
 # App
 PORT = int(os.getenv("PORT", 3000))
-RELOAD = bool(strtobool(os.getenv("RELOAD", "True")))
 SECRET_KEY = os.getenv("SECRET_KEY", "supersecretkey")
 
 LANGUAGE = os.getenv("LANGUAGE", "en")

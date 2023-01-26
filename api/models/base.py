@@ -31,7 +31,13 @@ class MixinModel:
         for key, value in data.items():
             setattr(self, key, value)
 
+        # Update modified_time
+        self.modified_time = datetime.utcnow()
         db.add(self)
         db.commit()
         db.refresh(self)
         return self
+
+    def delete(self, db):
+        db.delete(self)
+        db.commit()

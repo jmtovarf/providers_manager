@@ -4,7 +4,7 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
-from settings import PORT, RELOAD, SECRET_KEY
+from settings import PORT, SECRET_KEY
 
 from api.models import create_db_models
 from api.routes.user import user
@@ -37,4 +37,4 @@ app.include_router(user, prefix=docs.__api_version__)
 app.include_router(bank, prefix=docs.__api_version__)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=PORT, reload=RELOAD)
+    uvicorn.run(app, host="0.0.0.0", port=PORT)

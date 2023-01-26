@@ -14,31 +14,35 @@
         {% endif %}
         {% endwith %}
         <div class="card">
-            <h5 class="card-header">Banks List</h5>
+            <h5 class="card-header">{{ bank_list }}</h5>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Created At</th>
-                                <th scope="col">Modified At</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">{{ l_id }}</th>
+                                <th scope="col">{{ l_name }}</th>
+                                <th scope="col">{{ l_created_at }}</th>
+                                <th scope="col">{{ l_modified_at }}</th>
+                                <th scope="col">{{ actions }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% if banks %}
                             {% for bank in banks %}
                             <tr>
-                                <td>{{ bank.id }}</td>
+                                <td>
+                                    <a href="{{ request.state.api_version }}/bank/details/{{ bank.id }}">{{
+                                        bank.id}}</a>
+                                </td>
                                 <td>{{ bank.name }}</td>
                                 <td>{{ bank.created_time }}</td>
                                 <td>{{ bank.modified_time }}</td>
                                 <td>
                                     <a href="{{ request.state.api_version }}/bank/update/{{ bank.id }}"
-                                        class="btn btn-secondary">Edit</a>
-                                    <a href="/delete/{{ bank.id }}" class="btn btn-danger btn-delete">Delete</a>
+                                        class="btn btn-secondary">{{ edit }}</a>
+                                    <a href="{{ request.state.api_version }}/bank/delete/{{ bank.id }}"
+                                        class="btn btn-danger btn-delete">{{ delete }}</a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -46,7 +50,8 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="{{ request.state.api_version }}/bank/create" class="btn btn-block btn-primary">Create New</a>
+                <a href="{{ request.state.api_version }}/bank/create" class="btn btn-block btn-primary">{{ create_new
+                    }}</a>
             </div>
         </div>
     </div>
