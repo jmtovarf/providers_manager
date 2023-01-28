@@ -99,7 +99,8 @@ Once all dependencies are solved and isnstaller we can use the next command in o
 
     $ uvicorn app:app --reload
 
-In order to check if app is running locally, we can open a browser and check the documentation url (``http://127.0.0.1:8000/docs``).
+In order to check if app is running locally, we can open a browser and check the documentation url (``http://127.0.0.1:8000/docs``)
+or main view (``http://127.0.0.1:8000/api/v1``).
 
 Running with Docker
 ====================
@@ -119,7 +120,7 @@ Running the services:
 
     $ docker-compose up provider_manager
 
-In order to check if app is running in a docker service, we can open a browser and check the documentation url (``http://localhost/api/v1/docs``)
+In order to check if app is running in a docker service, we can open a browser and check the documentation url (``http://localhost/docs``)
 
 Reporting Bugs
 ==============
